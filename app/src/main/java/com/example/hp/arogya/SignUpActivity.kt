@@ -3,9 +3,12 @@ package com.example.hp.arogya
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.DialogFragment
+import android.app.IntentService
 import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.android.volley.Request
@@ -19,11 +22,12 @@ import java.util.*
 import android.widget.TextView
 import android.widget.DatePicker
 import com.example.hp.arogya.R.id.*
+import java.util.regex.Pattern
 
 
 class SignUpActivity : AppCompatActivity() {
 
-    val url = ""
+    val url = "https://arogya2018.herokuapp.com/api/account/signup"
     lateinit var genderSpinner: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,51 +60,61 @@ class SignUpActivity : AppCompatActivity() {
             },year,month,day)
             dob.show()
         }
-
-//        class DatePickerDialogTheme : DialogFragment(), DatePickerDialog.OnDateSetListener {
-//
-//            fun onCreateDialog(savedInstanceState: Bundle): Dialog {
-//                val calendar = Calendar.getInstance()
-//                val year = calendar.get(Calendar.YEAR)
-//                val month = calendar.get(Calendar.MONTH)
-//                val day = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//
-//                val datepickerdialog = DatePickerDialog(getActivity(),
-//                        AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, this, year, month, day)
-//
-//            }
-
         val jsonobj = JSONObject()
 
-//        }
         signUp.setOnClickListener {
-            if (password.text.toString() != confirmPassword.text.toString()) {
-                Toast.makeText(this,"enter same password",Toast.LENGTH_SHORT).show()
-            }else if(genderView.text.toString() == "Select Gender")
-            {
-                    Toast.makeText(this,"select gender",Toast.LENGTH_SHORT).show()
-            }
-            else {
+            if(!name.text.isEmpty() && !email.text.isEmpty() && !password.text.isEmpty() && !confirmPassword.text.isEmpty()
+            && DobView.text != "Not selected" && genderView.text.toString() != "Select Gender") {
 
-                    jsonobj.put("username", name.text)
+                if(!isEmailValid(email.text.toString())) {
+                    Toast.makeText(this, "Invalid email address!", Toast.LENGTH_SHORT).show()
+                } else if (password.text.toString() != confirmPassword.text.toString()) {
+                    Toast.makeText(this,"enter same password",Toast.LENGTH_SHORT).show()
+                } else {
+
+                    jsonobj.put("Name", name.text)
                     jsonobj.put("email", email.text)
                     jsonobj.put("password", password.text)
                     jsonobj.put("dob", DobView.text)
-                    jsonobj.put("gender", genderView.text)
+                    jsonobj.put("gender", genderView.text[0])
 
                     val que = Volley.newRequestQueue(this@SignUpActivity)
                     val request = JsonObjectRequest(Request.Method.POST, url, jsonobj,
-                            Response.Listener {
+                            Response.Listener { response ->
 
-                                response ->
-                                Toast.makeText(this, "no error", Toast.LENGTH_SHORT).show()
+                                val jsonStatus = response.getBoolean("success")
+
+                                if(jsonStatus) {
+                                    Toast.makeText(this, "Signed up succesfully!", Toast.LENGTH_SHORT).show()
+                                    val gotoLogin = Intent(this, MainActivity::class.java)
+                                    gotoLogin.putExtra("email", email.text.toString())
+                                    gotoLogin.putExtra("password", password.text.toString())
+                                    startActivity(gotoLogin)
+                                } else {
+                                    val jsonMessage = response.getString("message")
+                                    Toast.makeText(this, jsonMessage, Toast.LENGTH_SHORT).show()
+                                }
                             }, Response.ErrorListener {
-                        //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                        Log.d("Signup", it.message)
                     })
                     que.add(request)
 
+                }
+
+            } else {
+                Toast.makeText(this, "Complete the form!", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun isEmailValid(email: String): Boolean {
+        return Pattern.compile(
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@"
+                        + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|"
+                        + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
+        ).matcher(email).matches()
     }
 }
