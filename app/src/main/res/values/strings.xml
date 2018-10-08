@@ -31,6 +31,9 @@
     <string name="bmi">BMI</string>
     <string name="bmr">BMR</string>
     <string name="title_activity_bmi_bmr_result">BmiBmrResultActivity</string>
+    <string name="are_you_a">Are you a:</string>
+    <string name="nutritionist">Nutritionist</string>
+    <string name="dietician">Dietician</string>
     <string-array name="examples">
         <item>Hello</item>
         <item>Fading TextView</item>

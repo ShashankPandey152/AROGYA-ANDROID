@@ -1,18 +1,27 @@
 package com.example.hp.arogya
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.tomer.fadingtextview.FadingTextView
 import kotlinx.android.synthetic.main.activity_bmi_bmr_result.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.app_bar_bmi_bmr_result.*
 import kotlinx.android.synthetic.main.content_bmi_bmr_result.*
+import org.json.JSONObject
 
 class BmiBmrResultActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -83,6 +92,44 @@ class BmiBmrResultActivity : AppCompatActivity(), NavigationView.OnNavigationIte
             bmr_text.setTexts(texts)
 
             change_weight.text = "calories"
+
+            uploadBMR(BMR, mode)
+
+        }
+
+    }
+
+    fun uploadBMR(BMR: String, mode: String) {
+
+        Toast.makeText(this, "Updating data...", Toast.LENGTH_SHORT).show()
+
+        if(mode == "bmr") {
+
+            val url = "https://arogya2018.herokuapp.com/api/account/bmi"
+
+            val uid = "5bba4897bc9bab0030ddc2e6"
+
+            val jsonobj = JSONObject()
+
+            jsonobj.put("uid", uid)
+            jsonobj.put("bmr", BMR)
+
+            val que = Volley.newRequestQueue(this@BmiBmrResultActivity)
+            val request = JsonObjectRequest(Request.Method.POST, url, jsonobj,
+                    Response.Listener { response ->
+
+                        val jsonStatus = response.getBoolean("success")
+
+                        if(jsonStatus) {
+                            Toast.makeText(this, "Data updated successfully!", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val jsonMessage = response.getString("message")
+                            Toast.makeText(this, jsonMessage, Toast.LENGTH_SHORT).show()
+                        }
+                    }, Response.ErrorListener {
+                Log.d("Signup", it.message)
+            })
+            que.add(request)
 
         }
 
