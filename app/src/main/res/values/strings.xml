@@ -34,8 +34,12 @@
     <string name="are_you_a">Are you a:</string>
     <string name="nutritionist">Nutritionist</string>
     <string name="dietician">Dietician</string>
+    <string name="ask_arogya_baba">Ask Arogya Baba</string>
     <string-array name="examples">
         <item>Hello</item>
         <item>Fading TextView</item>
     </string-array>
+    <string name="title_activity_ask_arogya_baba">AskArogyaBabaActivity</string>
+    <string name="enter_your_question">Enter your question</string>
+    <string name="ask">Ask</string>
 </resources>

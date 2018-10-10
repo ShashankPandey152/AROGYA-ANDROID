@@ -14,11 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-
-
-
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".SignUpActivity"
             android:screenOrientation="portrait"
@@ -42,6 +38,17 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
 
+        </activity>
+        <activity
+            android:name=".BmiBmrResultActivity"
+            android:label="@string/title_activity_bmi_bmr_result"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".AskArogyaBabaActivity"
+            android:label="@string/title_activity_ask_arogya_baba"
+            android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,12 +57,6 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".BmiBmrResultActivity"
-            android:label="@string/title_activity_bmi_bmr_result"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

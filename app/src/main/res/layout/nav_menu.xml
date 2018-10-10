@@ -125,14 +125,14 @@
             android:layout_marginStart="40dp" />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textSize="15sp"
             android:layout_toRightOf="@id/chat_icon"
-            android:text="@string/chat_with_experts"
+            android:text="@string/ask_arogya_baba"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/chat_icon" />
 
