@@ -129,46 +129,12 @@
                 android:text="@string/not_selected"
                 android:textColor="@color/colorPrimary" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/are_you_a"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="16dp">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/nutritionist"
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text="@string/nutritionist"
-                    android:textColor="@color/colorPrimary"/>
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/dietician"
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text="@string/dietician"
-                    android:textColor="@color/colorPrimary"/>
-
-            </LinearLayout>
-
             <Spinner
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="left"
-                android:spinnerMode="dropdown"
-                tools:ignore="RtlHardcoded" />
+                android:layout_marginTop="30dp"
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:id="@+id/genderView"

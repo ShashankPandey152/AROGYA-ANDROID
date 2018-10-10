@@ -66,56 +66,38 @@ class SignUpActivity : AppCompatActivity() {
             if(!name.text.isEmpty() && !email.text.isEmpty() && !password.text.isEmpty() && !confirmPassword.text.isEmpty()
             && DobView.text != "Not selected" && genderView.text.toString() != "Select Gender") {
 
-                var accountType: String = ""
-
-                var error = 0
-
-                if(nutritionist.isChecked && dietician.isChecked) {
-                    Toast.makeText(this, "Cannot select both nutritionist and dietician!", Toast.LENGTH_SHORT).show()
-                    error = 1
-                } else if(nutritionist.isChecked) {
-                    accountType = "N"
-                } else if(dietician.isChecked) {
-                    accountType = "D"
-                } else {
-                    accountType = "U"
-                }
-
                 if(!isEmailValid(email.text.toString())) {
                     Toast.makeText(this, "Invalid email address!", Toast.LENGTH_SHORT).show()
                 } else if (password.text.toString() != confirmPassword.text.toString()) {
                     Toast.makeText(this,"enter same password",Toast.LENGTH_SHORT).show()
                 } else {
 
-                    if(error == 0) {
-                        jsonobj.put("Name", name.text)
-                        jsonobj.put("email", email.text)
-                        jsonobj.put("password", password.text)
-                        jsonobj.put("dob", DobView.text)
-                        jsonobj.put("gender", genderView.text[0])
-                        jsonobj.put("accountType", accountType)
+                    jsonobj.put("Name", name.text)
+                    jsonobj.put("email", email.text)
+                    jsonobj.put("password", password.text)
+                    jsonobj.put("dob", DobView.text)
+                    jsonobj.put("gender", genderView.text[0])
 
-                        val que = Volley.newRequestQueue(this@SignUpActivity)
-                        val request = JsonObjectRequest(Request.Method.POST, url, jsonobj,
-                                Response.Listener { response ->
+                    val que = Volley.newRequestQueue(this@SignUpActivity)
+                    val request = JsonObjectRequest(Request.Method.POST, url, jsonobj,
+                            Response.Listener { response ->
 
-                                    val jsonStatus = response.getBoolean("success")
+                                val jsonStatus = response.getBoolean("success")
 
-                                    if(jsonStatus) {
-                                        Toast.makeText(this, "Signed up succesfully!", Toast.LENGTH_SHORT).show()
-                                        val gotoLogin = Intent(this, MainActivity::class.java)
-                                        gotoLogin.putExtra("email", email.text.toString())
-                                        gotoLogin.putExtra("password", password.text.toString())
-                                        startActivity(gotoLogin)
-                                    } else {
-                                        val jsonMessage = response.getString("message")
-                                        Toast.makeText(this, jsonMessage, Toast.LENGTH_SHORT).show()
-                                    }
-                                }, Response.ErrorListener {
-                            Log.d("Signup", it.message)
-                        })
-                        que.add(request)
-                    }
+                                if(jsonStatus) {
+                                    Toast.makeText(this, "Signed up succesfully!", Toast.LENGTH_SHORT).show()
+                                    val gotoLogin = Intent(this, MainActivity::class.java)
+                                    gotoLogin.putExtra("email", email.text.toString())
+                                    gotoLogin.putExtra("password", password.text.toString())
+                                    startActivity(gotoLogin)
+                                } else {
+                                    val jsonMessage = response.getString("message")
+                                    Toast.makeText(this, jsonMessage, Toast.LENGTH_SHORT).show()
+                                }
+                            }, Response.ErrorListener {
+                        Log.d("Signup", it.message)
+                    })
+                    que.add(request)
 
                 }
 

@@ -3,6 +3,8 @@
     package="com.example.hp.arogya">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SignUpActivity"
             android:screenOrientation="portrait"
@@ -31,31 +33,17 @@
             android:name=".EditProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".BmiBmrActivity"
-            android:label="@string/title_activity_bmi_bmr"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden">
+        <activity android:name=".StartActivity"></activity>
+        <activity android:name=".SetGoalActivity" />
+        <activity android:name=".FoodScannerActivity">
 
         </activity>
-        <activity
-            android:name=".BmiBmrResultActivity"
-            android:label="@string/title_activity_bmi_bmr_result"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".AskArogyaBabaActivity"
-            android:label="@string/title_activity_ask_arogya_baba"
-            android:theme="@style/AppTheme.NoActionBar">
-
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

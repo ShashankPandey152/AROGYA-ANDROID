@@ -16,30 +16,4 @@
     <string name="date_of_birth">DATE OF BIRTH</string>
     <string name="not_selected">Not selected</string>
     <string name="submit">Submit</string>
-    <string name="title_activity_bmi_bmr">BmiBmrActivity</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="home">Home</string>
-    <string name="profile">Profile</string>
-    <string name="bmi_bmr">BMI/BMR</string>
-    <string name="chat_with_experts">Chat with experts</string>
-    <string name="food_scanner">Food scanner</string>
-    <string name="pedometer">Pedometer</string>
-    <string name="height_in_cms">Height (in cms)</string>
-    <string name="weight_in_kg">Weight (in kg)</string>
-    <string name="bmi">BMI</string>
-    <string name="bmr">BMR</string>
-    <string name="title_activity_bmi_bmr_result">BmiBmrResultActivity</string>
-    <string name="are_you_a">Are you a:</string>
-    <string name="nutritionist">Nutritionist</string>
-    <string name="dietician">Dietician</string>
-    <string name="ask_arogya_baba">Ask Arogya Baba</string>
-    <string-array name="examples">
-        <item>Hello</item>
-        <item>Fading TextView</item>
-    </string-array>
-    <string name="title_activity_ask_arogya_baba">AskArogyaBabaActivity</string>
-    <string name="enter_your_question">Enter your question</string>
-    <string name="ask">Ask</string>
 </resources>
