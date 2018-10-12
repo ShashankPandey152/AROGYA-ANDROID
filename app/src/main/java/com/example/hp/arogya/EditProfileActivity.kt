@@ -1,6 +1,7 @@
 package com.example.hp.arogya
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,7 +20,7 @@ import java.util.*
 
 class EditProfileActivity : AppCompatActivity() {
 
-    val url = ""
+    val url = "https://arogya2018.herokuapp.com/api/account/edit"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -40,17 +41,8 @@ class EditProfileActivity : AppCompatActivity() {
 
         }
 
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
 
-        changeDob.setOnClickListener {
-            val dob = DatePickerDialog(this,android.R.style.Theme_DeviceDefault_Light, DatePickerDialog.OnDateSetListener { view: DatePicker, year1:Int, month1:Int, day1:Int ->
-                changeDobView.setText(""+day1.toString()+"/"+month1.toString()+"/"+year1.toString())
-            },year,month,day)
-            dob.show()
-        }
+
 
 
         editBtn.setOnClickListener {
@@ -58,18 +50,26 @@ class EditProfileActivity : AppCompatActivity() {
 
             val jsonobj = JSONObject()
 
-            if(changeName.text.toString().isEmpty() && changeDobView.text.toString() == "Not selected" && changeGenderView.text.toString() == "Select Gender") {
+            if(changeName.text.toString().isEmpty() && changePassword.text.toString().isEmpty()  && changeGenderView.text.toString() == "Select Gender") {
                 Toast.makeText(this,"Please Select any one Field",Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show()
+                val uid = "5bba4897bc9bab0030ddc2e6"
+                jsonobj.put("uid", uid)
                 if(changeName.text.toString().isNotEmpty()) {
-                    jsonobj.put("username", changeName.text)
+                    jsonobj.put("Name", changeName.text)
+                }else {
+                    jsonobj.put("Name","")
                 }
-                if(changeDobView.text.toString() != "Not selected") {
-                    jsonobj.put("dob", changeDobView.text)
+                if(changePassword.text.toString().isNotEmpty()) {
+                    jsonobj.put("password", changePassword.text)
+                }else {
+                    jsonobj.put("password","")
                 }
                 if(changeGenderView.text.toString() != "Select Gender") {
                     jsonobj.put("gender", changeGenderView.text[0])
+                }else {
+                    jsonobj.put("gender","")
                 }
 
 
@@ -78,7 +78,14 @@ class EditProfileActivity : AppCompatActivity() {
                         Response.Listener {
 
                             response ->
-                            Toast.makeText(this, "no error", Toast.LENGTH_SHORT).show()
+                            val jsonStatus = response.getBoolean("success")
+                            if(jsonStatus) {
+                                Toast.makeText(this, "Edit succesfully!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val jsonMessage = response.getString("message")
+                                Toast.makeText(this, jsonMessage, Toast.LENGTH_SHORT).show()
+                            }
+
                         }, Response.ErrorListener {
                     Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
                 })

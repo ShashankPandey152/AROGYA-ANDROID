@@ -14,15 +14,17 @@ import org.json.JSONObject
 
 class SetGoalActivity : AppCompatActivity() {
 
-    val url = ""
+    val url = "https://arogya2018.herokuapp.com/api/account/Pedo"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_goal)
 
         setGoal.setOnClickListener {
             val jsonobj = JSONObject()
-
-            jsonobj.put("email",totalSteps.text)
+            val uid = "5bc08602c0ca9d00303938b6"
+            jsonobj.put("uid", uid)
+            jsonobj.put("cb", "")
+            jsonobj.put("nos",totalSteps.text)
 
 
             val que = Volley.newRequestQueue(this@SetGoalActivity)
@@ -35,7 +37,6 @@ class SetGoalActivity : AppCompatActivity() {
 
                             Toast.makeText(this, "Goal is set!", Toast.LENGTH_SHORT).show()
 
-                            val token = response.getString("token")
 
                         } else {
 

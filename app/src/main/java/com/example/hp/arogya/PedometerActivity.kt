@@ -28,10 +28,9 @@ import org.json.JSONObject
  */
 class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener {
 
-    val url = ""
+    val url = "https://arogya2018.herokuapp.com/api/account/pedo"
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private val TEXT_NUM_STEPS = "Number of Steps: "
     private var numSteps: Int = 0
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
@@ -45,7 +44,7 @@ class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener
 
     override fun step(timeNs: Long) {
         numSteps++
-        tvSteps.text = TEXT_NUM_STEPS.plus(numSteps)
+        tvSteps.text = numSteps.toString()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,9 +64,13 @@ class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener
         btnStop.setOnClickListener(View.OnClickListener {
             sensorManager!!.unregisterListener(this)
             val jsonobj = JSONObject()
-            var totalCalorie = java.lang.Long.parseLong(tvSteps.text.toString())
+            val temp = tvSteps.text.toString()
+            val totalCalorie = temp.toFloat()/20
             Toast.makeText(this, "right", Toast.LENGTH_SHORT).show()
-            jsonobj.put("email",totalCalorie.toString())
+            val uid = "5bbf7c1f8464b30030457602"
+            jsonobj.put("uid", uid)
+            jsonobj.put("cb",totalCalorie.toString())
+            jsonobj.put("nos", "")
 
 
             val que = Volley.newRequestQueue(this@PedometerActivity)
@@ -78,9 +81,8 @@ class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener
 
                         if(jsonStatus) {
 
-                            Toast.makeText(this, "Logged in successfully!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "ok!", Toast.LENGTH_SHORT).show()
 
-                            val token = response.getString("token")
 
                         } else {
 
@@ -90,7 +92,7 @@ class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener
                         }
 
                     }, Response.ErrorListener {
-                Log.d("Login", it.message)
+
             })
             que.add(request)
 

@@ -16,22 +16,22 @@ import org.json.JSONObject
 
 class ProfileActivity : AppCompatActivity() {
 
-    val url =""
+    val url = "https://arogya2018.herokuapp.com/api/account/profile"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        val loginRequest = object : JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
+
+        val jsonobj = JSONObject()
+        val uid = "5bba4897bc9bab0030ddc2e6"
+        jsonobj.put("uid", uid)
+        val loginRequest = object : JsonObjectRequest(Method.POST, url, jsonobj, Response.Listener { response ->
             try {
-                val jsonStatus = response.getString("logStatus")
+                nameView.setText(response.getString("Name"))
+                emailView.setText(response.getString("email"))
+                genderView1.setText(response.getString("gender"))
+                dobView1.setText(response.getString("dob"))
+                Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show()
 
-                if (jsonStatus.toInt() == 0) {
-                    Toast.makeText(this, "Email address or password is incorrect!",
-                            Toast.LENGTH_SHORT).show()
-                } else if (jsonStatus.toInt() == 1) {
-                    Toast.makeText(this, "login successfull!",
-                            Toast.LENGTH_SHORT).show()
-
-                }
 
             } catch (e: JSONException) {
                 Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()

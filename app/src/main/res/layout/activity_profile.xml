@@ -26,6 +26,7 @@
                 android:textColor="@color/colorPrimaryDark"/>
 
             <TextView
+                android:id="@+id/nameView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -39,6 +40,7 @@
 
 
             <TextView
+                android:id="@+id/emailView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -51,6 +53,7 @@
 
 
             <TextView
+                android:id="@+id/genderView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Gender"
@@ -61,6 +64,7 @@
                 android:layout_marginRight="20dp"/>
 
             <TextView
+                android:id="@+id/dobView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date of Birth"
