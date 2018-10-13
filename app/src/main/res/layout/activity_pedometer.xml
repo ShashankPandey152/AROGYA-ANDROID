@@ -1,78 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context="com.example.hp.arogya.PedometerActivity">-->
-
-<!--</android.support.constraint.ConstraintLayout>-->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".PedometerActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tvHeader"
+    <include
+        layout="@layout/app_bar_pedometer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="PEDOMETER"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp" />
+        android:layout_height="match_parent" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tvHeader"
-        android:background="@color/colorPrimary" />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tvSteps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="50sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvSteps"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button_colored"
-        android:text="START PEDOMETER"
-        android:textColor="@android:color/white" />
+            <include
+                android:id="@+id/side_menu"
+                layout="@layout/nav_menu" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnStop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnStart"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/button_colored"
-        android:text="STOP PEDOMETER"
-        android:textColor="@android:color/white" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnGoal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btnStop"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/button_colored"
-        android:text="SET GOAL"
-        android:textColor="@android:color/white" />
+        </RelativeLayout>
 
-</RelativeLayout>
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

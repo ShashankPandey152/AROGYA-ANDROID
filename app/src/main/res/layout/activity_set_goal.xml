@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hp.arogya.SetGoalActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-
-    <TextView
-        android:id="@+id/textView2"
+    <include
+        layout="@layout/app_bar_set_goal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="SET YOUR GOALS"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="match_parent" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/etName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="128dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/totalSteps"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="enter number of steps"
-            android:inputType="textEmailAddress"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="match_parent">
 
-    </android.support.design.widget.TextInputLayout>
+            <include
+                android:id="@+id/side_menu"
+                layout="@layout/nav_menu" />
 
-    <Button
-        android:id="@+id/setGoal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/button_colored"
-        android:text="SET"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
-</android.support.constraint.ConstraintLayout>
+        </RelativeLayout>
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

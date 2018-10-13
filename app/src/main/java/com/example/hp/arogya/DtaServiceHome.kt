@@ -5,9 +5,11 @@ package com.example.hp.arogya
  */
 object DataServiceHome {
     val categories = listOf(
-            Category("Pedometer", "pedometer"),
-            Category("FoodScanner", "pedometer"),
-            Category("Profile", "pedometer")
+            Category("FoodScanner"),
+            Category("Pedometer"),
+            Category("Profile"),
+            Category("Bmi/Bmr"),
+            Category("ArogyaBaba")
 
     )
 }

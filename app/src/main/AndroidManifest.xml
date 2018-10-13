@@ -16,11 +16,22 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".SignUpActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" >
+
+        </activity>
         <activity
             android:name=".PedometerActivity"
             android:screenOrientation="portrait"
@@ -33,17 +44,21 @@
             android:name=".EditProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".StartActivity"></activity>
         <activity android:name=".SetGoalActivity" />
         <activity android:name=".FoodScannerActivity">
 
         </activity>
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".BmiBmrActivity">
+
+        </activity>
+        <activity android:name=".BmiBmrResultActivity">
+
+        </activity>
+        <activity android:name=".AskArogyaBabaActivity">
+
         </activity>
     </application>
 
