@@ -133,7 +133,7 @@ class FoodScannerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 val name = category[0]
                 Toast.makeText(this,name.toString(),Toast.LENGTH_LONG).show()
                 cal = cal * totalQuantity.text.toString().toInt()
-                var url = "https://arogya2018.herokuapp.com/api/account/daily"
+                var url = "https://<website-link>/api/account/daily"
                 val uid = intent.getStringExtra("uid")
                 val jsonobj = JSONObject()
                 jsonobj.put("uid",uid.toString())
@@ -143,7 +143,7 @@ class FoodScannerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 val loginRequest = object : JsonObjectRequest(Method.POST, url, jsonobj, Response.Listener { response ->
                     try {
                         textCalorie.setText("No. of Calories "+cal.toString())
-                        url = "https://arogya2018.herokuapp.com/api/account/fetchbmr"
+                        url = "https://<website-link>/api/account/fetchbmr"
                         val uid = "5bc110facb58930030b87f9b"
                         val loginRequest = object : JsonObjectRequest(Method.POST, url, jsonobj, Response.Listener { response ->
                             try {
@@ -246,7 +246,7 @@ class FoodScannerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         hashMap.put(4,arrayOf("chicken curry","6",day.toString()))
         hashMap.put(5,arrayOf("chole","12",day.toString()))
 
-        val url = "http://e986272d.ngrok.io/?img=" + downu
+        val url = "http://<website-link>/?img=" + downu
         Log.d("url", url)
         val loginRequest = object: JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
             try {
