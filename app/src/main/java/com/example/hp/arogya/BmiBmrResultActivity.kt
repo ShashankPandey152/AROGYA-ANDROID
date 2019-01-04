@@ -158,7 +158,7 @@ class BmiBmrResultActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
         if(mode == "bmr") {
 
-            val url = "https://arogya2018.herokuapp.com/api/account/bmi"
+            val url = "https://<website-link>api/account/bmi"
 
             val uid = intent.getStringExtra("uid")
 
