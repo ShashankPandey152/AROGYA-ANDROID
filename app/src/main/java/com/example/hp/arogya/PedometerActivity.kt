@@ -37,7 +37,7 @@ import org.json.JSONObject
  */
 class PedometerActivity : AppCompatActivity(), SensorEventListener, StepListener, NavigationView.OnNavigationItemSelectedListener {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/pedo"
+    val url = "https://<website-link>/api/account/pedo"
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
     private var numSteps: Int = 0
