@@ -27,7 +27,7 @@ import java.util.regex.Pattern
 
 class SignUpActivity : AppCompatActivity() {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/signup"
+    val url = "https://<website-link>/api/account/signup"
     lateinit var genderSpinner: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
