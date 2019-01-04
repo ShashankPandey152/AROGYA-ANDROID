@@ -28,7 +28,7 @@ import java.util.*
 
 class EditProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/edit"
+    val url = "https://<website-link>/api/account/edit"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
