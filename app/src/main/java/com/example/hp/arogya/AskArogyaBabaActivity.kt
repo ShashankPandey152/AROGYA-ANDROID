@@ -58,7 +58,7 @@ class AskArogyaBabaActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
             val file = topic.selectedItem.toString().toLowerCase()
 
-            val url = "https://arogya-baba-django.herokuapp.com/?file=" + file  +
+            val url = "https://<website-link>/?file=" + file  +
                     "&question=" + devoidOfSpace(question.text.toString())
             Log.d("Arogya", url)
             val loginRequest = object: JsonObjectRequest(Method.GET, url, null, Response.Listener { response ->
