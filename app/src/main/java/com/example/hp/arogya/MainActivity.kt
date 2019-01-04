@@ -16,7 +16,7 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/signin"
+    val url = "https://<website-link>/api/account/signin"
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
