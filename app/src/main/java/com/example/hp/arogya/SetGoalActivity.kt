@@ -24,7 +24,7 @@ import org.json.JSONObject
 
 class SetGoalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/Pedo"
+    val url = "https://<website-link>/api/account/Pedo"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_goal)
