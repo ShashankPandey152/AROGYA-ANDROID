@@ -24,7 +24,7 @@ import org.json.JSONObject
 
 class ProfileActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    val url = "https://arogya2018.herokuapp.com/api/account/profile"
+    val url = "https://<website-link>/api/account/profile"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
